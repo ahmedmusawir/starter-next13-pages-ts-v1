@@ -1,0 +1,14 @@
+.menu li:active a {
+  @apply bg-indigo-200;
+}
+.menu li:active {
+  @apply rounded-none;
+  @apply bg-indigo-200;
+}
+
+.menu li a:hover {
+  border-radius: 2rem !important;
+}
+.menu li a:focus {
+  border-radius: 0.5rem !important;
+}

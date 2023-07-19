@@ -14,5 +14,14 @@ module.exports = {
       },
     },
   },
-  plugins: [require("daisyui")],
+  plugins: [
+    require("@tailwindcss/typography"),
+    require("@shrutibalasa/tailwind-grid-auto-fit"),
+    require("daisyui"),
+  ],
+  daisyui: {
+    themes: ["light", "dark"],
+    styled: true,
+    rtl: false,
+  },
 };

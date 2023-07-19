@@ -6,19 +6,17 @@ import { Box, Container, Row } from "@/components/layouts";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home() {
+export default function PageTemplate() {
   return (
     <Layout>
       <Head>
-        <title>Next Starter Home</title>
+        <title>Next Page Template</title>
         <meta name="description" content="This is the demo page" />
       </Head>
       {/* <Container className={"border border-gray-500"} FULL={false}> */}
       <Container className={""} FULL={false}>
         <Row className="prose max-w-3xl mx-auto">
-          <h1 className="h1">
-            This is a starting point for ... Next.js 13 (no App router){" "}
-          </h1>
+          <h1 className="h1">This is the Page Template (Copy Me)</h1>
           <h2 className="h2">
             Lorem ipsum dolor, sit amet consectetur adipisicing elit
           </h2>

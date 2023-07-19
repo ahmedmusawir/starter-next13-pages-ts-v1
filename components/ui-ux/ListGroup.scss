@@ -1,0 +1,15 @@
+.list-group {
+  border: 1px solid #e3e3e3;
+  padding: 2rem;
+
+  .list-group-item {
+    background-color: #e3e3e3;
+    padding: 1rem;
+    list-style: none;
+  }
+
+  .active {
+    background-color: dodgerblue;
+    color: #e3e3e3;
+  }
+}
