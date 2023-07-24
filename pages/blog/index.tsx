@@ -18,7 +18,7 @@ export interface Post {
 
 export default function Blog() {
   const { data, isLoading, error } = useGetPostsQuery({});
-  console.log("Posts:", data?.posts);
+  // console.log("Posts:", data?.posts);
   const posts: Post[] = data?.posts;
 
   return (
@@ -47,7 +47,10 @@ export default function Blog() {
                       {"July 20, 2023"}
                     </time>
                     {post?.tags?.map((tag) => (
-                      <a className="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">
+                      <a
+                        key={tag}
+                        className="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100"
+                      >
                         {tag}
                       </a>
                     ))}
