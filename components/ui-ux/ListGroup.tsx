@@ -1,5 +1,4 @@
 import { MouseEvent, useState } from "react";
-import Like from "./Like";
 import "./ListGroup.scss";
 // import "bootstrap/dist/css/bootstrap.css";
 
@@ -37,7 +36,7 @@ function ListGroup({ items, heading, onSelectItem }: Props) {
               onSelectItem(city);
             }}
           >
-            {city} <Like onClick={() => console.log("Heart Clicked")} />
+            {city}
           </li>
         ))}
       </ul>

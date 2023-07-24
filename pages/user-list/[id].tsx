@@ -1,34 +1,50 @@
 import Layout from "@/components/Layout";
 import Head from "next/head";
 import React from "react";
-import {
-  GetStaticPaths,
-  GetStaticProps,
-  GetStaticPathsContext,
-  GetStaticPropsContext,
-} from "next";
+import { GetStaticPaths, GetStaticProps } from "next";
+import { useRouter } from "next/router";
+import Spinner from "@/components/ui-ux/Spinner";
 
 export interface UserDetailProps {
   id: number;
-  name: string;
+  firstName: string;
   email: string;
   phone: string;
-  address: {
-    city: string;
-    zipcode: string;
-  };
+  age: number;
+  gender: string;
+  birthDate: string;
 }
 
 export interface UserDetailPageProps {
   ninja: UserDetailProps;
 }
 
+export interface User {
+  id: number;
+  firstName: string;
+  email: string;
+  phone: string;
+  age: number;
+  gender: string;
+  birthDate: string;
+}
+
+export interface UserList {
+  users: User[];
+}
+
+export interface Ninja {
+  ninja: User;
+}
+
 // define the return type for getStaticPaths
 export const getStaticPaths: GetStaticPaths = async () => {
-  const res = await fetch("https://jsonplaceholder.typicode.com/users");
-  const data: UserDetailProps[] = await res.json();
+  const res = await fetch("https://dummyjson.com/users?limit=5");
+  const data: UserList = await res.json();
 
-  const paths = data.map((ninja) => {
+  console.log("Paths:", data);
+
+  const paths = data.users.map((ninja) => {
     return {
       params: { id: ninja.id.toString() },
     };
@@ -36,27 +52,32 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths,
-    fallback: false,
+    fallback: true,
   };
 };
 
 // define the return type and the context parameter type for getStaticProps
-export const getStaticProps: GetStaticProps<
-  UserDetailPageProps,
-  { id: string }
-> = async (context) => {
+export const getStaticProps: GetStaticProps<Ninja, { id: string }> = async (
+  context
+) => {
   const id = context?.params?.id;
-  const res = await fetch("https://jsonplaceholder.typicode.com/users/" + id);
+  const res = await fetch("https://dummyjson.com/users/" + id);
   const data: UserDetailProps = await res.json();
-
-  console.log("data:", data);
 
   return {
     props: { ninja: data },
+    revalidate: 600, // Re-generate the page every 100 mins.
   };
 };
 
-const SingleUser = ({ ninja }: UserDetailPageProps) => {
+const SingleUser = ({ ninja }: Ninja) => {
+  const router = useRouter();
+
+  // If the page is not yet generated, this will be displayed initially
+  if (router.isFallback) {
+    return <Spinner />;
+  }
+
   return (
     <Layout>
       <Head>
@@ -88,7 +109,8 @@ const SingleUser = ({ ninja }: UserDetailPageProps) => {
               className="text-gray-200 block rounded-lg text-center px-6 py-3 bg-gray-900 hover:bg-black hover:text-white"
             >
               <h2>
-                Connect with <span className="font-bold">{ninja.name}</span>
+                Connect with{" "}
+                <span className="font-bold">{ninja.firstName}</span>
               </h2>
             </a>
           </div>
@@ -161,7 +183,7 @@ const SingleUser = ({ ninja }: UserDetailPageProps) => {
                   alt=""
                   className="rounded-full h-6 shadow-md inline-block mr-2"
                 />
-                City: {ninja.address.city}
+                Age: {ninja.age}
                 {/* <span className="text-gray-500 text-xs">24 min ago</span> */}
               </a>
             </div>
@@ -175,7 +197,7 @@ const SingleUser = ({ ninja }: UserDetailPageProps) => {
                   alt=""
                   className="rounded-full h-6 shadow-md inline-block mr-2"
                 />
-                Zip Code: {ninja.address.zipcode}
+                Gender: {ninja.gender}
                 {/* <span className="text-gray-500 text-xs">24 min ago</span> */}
               </a>
             </div>
@@ -189,7 +211,7 @@ const SingleUser = ({ ninja }: UserDetailPageProps) => {
                   alt=""
                   className="rounded-full h-6 shadow-md inline-block mr-2"
                 />
-                ID: {ninja.id}
+                Birth Date: {ninja.birthDate}
                 {/* <span className="text-gray-500 text-xs">24 min ago</span> */}
               </a>
             </div>

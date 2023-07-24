@@ -3,26 +3,32 @@ import { Inter } from "next/font/google";
 import Head from "next/head";
 import Layout from "@/components/Layout";
 import { Box, Container, Row } from "@/components/layouts";
+import { GetStaticPaths, GetStaticProps } from "next";
 import { FiUsers } from "react-icons/fi";
 import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export interface StaicProps {
+export interface User {
   id: number;
-  name: string;
+  firstName: string;
   email: string;
   phone: string;
-  city: string;
-  zipcode: string;
+  age: number;
+  gender: string;
+  birthDate: string;
 }
 
 export interface UserList {
-  ninjas: StaicProps[];
+  users: User[];
+}
+
+export interface NinjaList {
+  ninjas: UserList;
 }
 
 export const getStaticProps = async () => {
-  const res = await fetch("https://jsonplaceholder.typicode.com/users");
+  const res = await fetch("https://dummyjson.com/users?limit=5");
   const data = await res.json();
 
   return {
@@ -30,7 +36,8 @@ export const getStaticProps = async () => {
   };
 };
 
-export default function UserList({ ninjas }: UserList) {
+export default function UserList({ ninjas }: NinjaList) {
+  // console.log("Ninjas List:", ninjas.users); // THIS IS GIVING ME THE USERS ARRAY I NEEDED NOT JUST ninjas ... IS THIS OK?
   return (
     <Layout>
       <Head>
@@ -49,15 +56,15 @@ export default function UserList({ ninjas }: UserList) {
           <h2 className="text-center">All Users</h2>
           {/* <Box className={"p-3 w-[32rem]  flex flex-wrap justify-around"}> */}
           <Box className={"flex flex-wrap justify-center"}>
-            {ninjas.map((ninja) => (
-              <div className="card p-6 m-2 border shadow-lg">
+            {ninjas.users.map((ninja) => (
+              <div className="card p-6 m-2 border shadow-lg" key={ninja.id}>
                 <Link
                   href={"/user-list/" + ninja.id}
                   key={ninja.id}
                   className=""
                 >
                   <FiUsers size={50} className="mx-auto text-primary" />
-                  <h3>{ninja.name}</h3>
+                  <h3>{ninja.firstName}</h3>
                 </Link>
               </div>
             ))}
