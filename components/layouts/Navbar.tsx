@@ -42,7 +42,7 @@ const Navbar = ({ className }: Props) => {
               <Link href="/template">Template</Link>
             </li>
             <li>
-              <Link href="/user-list">Client List</Link>
+              <Link href="/products">Products</Link>
             </li>
             <li>
               <Link href="/blog">Blog</Link>
@@ -65,7 +65,7 @@ const Navbar = ({ className }: Props) => {
             <Link href="/template">Page Template</Link>
           </li>
           <li>
-            <Link href="/user-list">Client List</Link>
+            <Link href="/products">Products</Link>
           </li>
           <li>
             <Link href="/blog">Blog</Link>

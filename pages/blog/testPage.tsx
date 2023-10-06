@@ -1,7 +1,7 @@
 import Layout from "@/components/Layout";
 import { Row } from "@/components/layouts";
 import Container from "@/components/layouts/Container";
-import { apiPost } from "@/services/apiPosts";
+import { apiPost } from "@/features/posts/apiPosts";
 import { store } from "@/store/store";
 
 export async function getStaticProps() {
