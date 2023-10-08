@@ -7,7 +7,7 @@ import { useGetProductsQuery } from "@/features/products/apiProducts";
 import Products from "@/features/products/Products";
 import { useSelector } from "react-redux";
 import { ProductsData, RootState } from "@/global-interfaces";
-import { SearchBar } from "@/components/ui-ux/SearchBar";
+import { ProductSearchBar } from "@/components/ui-ux/ProductSearchBar";
 import { RadioButtonCategoryGroup } from "@/components/ui-ux/RadioButtonCategoryGroup";
 
 export default function ProductsPage() {
@@ -35,7 +35,7 @@ export default function ProductsPage() {
       <Container className={""} FULL={false}>
         <Row className="prose max-w-3xl mx-auto bg-indigo-200 py-10 px-16 rounded-xl">
           <h1 className="h1">The Products</h1>
-          <SearchBar />
+          <ProductSearchBar />
           <RadioButtonCategoryGroup />
         </Row>
         <Row className="prose max-w-3xl bg-gray-100 rounded-xl">

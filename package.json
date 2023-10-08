@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@emailjs/browser": "^3.11.0",
+    "@heroicons/react": "^2.0.18",
     "@reduxjs/toolkit": "^1.9.5",
     "@types/node": "20.4.2",
     "@types/react": "18.2.15",
@@ -17,6 +18,7 @@
     "autoprefixer": "10.4.14",
     "axios": "^1.4.0",
     "daisyui": "^3.2.1",
+    "heroicons": "^2.0.18",
     "next": "13.4.10",
     "next-redux-wrapper": "^8.1.0",
     "postcss": "8.4.26",

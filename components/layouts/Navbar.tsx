@@ -47,6 +47,9 @@ const Navbar = ({ className }: Props) => {
             <li>
               <Link href="/blog">Blog</Link>
             </li>
+            <li>
+              <Link href="/users">Clients</Link>
+            </li>
           </ul>
         </div>
         <Link href="/" className="btn btn-ghost normal-case text-xl">
@@ -69,6 +72,9 @@ const Navbar = ({ className }: Props) => {
           </li>
           <li>
             <Link href="/blog">Blog</Link>
+          </li>
+          <li>
+            <Link href="/users">Clients</Link>
           </li>
         </ul>
       </div>

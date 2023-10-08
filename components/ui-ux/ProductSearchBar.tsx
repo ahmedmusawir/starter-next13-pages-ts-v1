@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setSearchTerm } from "@/features/products/productSlice";
 import { RootState } from "@/global-interfaces";
 
-export const SearchBar = () => {
+export const ProductSearchBar = () => {
   const dispatch = useDispatch();
   const searchTerm = useSelector(
     (state: RootState) => state.product.searchTerm
