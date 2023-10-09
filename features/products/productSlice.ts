@@ -10,9 +10,11 @@ const productSlice = createSlice({
   initialState,
   reducers: {
     setSearchTerm: (state, action) => {
+      state.categoryTerm = "";
       state.searchTerm = action.payload;
     },
     setCategoryTerm: (state, action) => {
+      state.searchTerm = "";
       state.categoryTerm = action.payload;
     },
   },

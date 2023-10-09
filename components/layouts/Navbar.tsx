@@ -58,20 +58,14 @@ const Navbar = ({ className }: Props) => {
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
+          <li>{/* <Link href="/">Home</Link> */}</li>
+          <li>{/* <Link href="/daisyui">DaisyUI Demo</Link> */}</li>
+          <li>{/* <Link href="/template">Page Template</Link> */}</li>
           <li>
-            <Link href="/">Home</Link>
-          </li>
-          <li>
-            <Link href="/daisyui">DaisyUI Demo</Link>
-          </li>
-          <li>
-            <Link href="/template">Page Template</Link>
+            <Link href="/blog">Blog</Link>
           </li>
           <li>
             <Link href="/products">Products</Link>
-          </li>
-          <li>
-            <Link href="/blog">Blog</Link>
           </li>
           <li>
             <Link href="/users">Clients</Link>
@@ -82,7 +76,7 @@ const Navbar = ({ className }: Props) => {
         <Link href="/demo" className="btn btn-primary">
           Tailwind Demo
         </Link>
-        <ThemeSwitch />
+        {/* <ThemeSwitch /> */}
       </div>
     </div>
   );

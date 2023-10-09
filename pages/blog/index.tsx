@@ -22,7 +22,7 @@ export default function Blog() {
       </Head>
       {/* <Container className={"border border-gray-500"} FULL={false}> */}
       <Container className={""} FULL={false}>
-        <Row className="prose max-w-3xl mx-auto">
+        <Row className="prose max-w-3xl mx-auto bg-purple-200 p-12">
           <h1 className="h1">The Blog</h1>
           <h2 className="h2">Blog with RTK Query on Next.js</h2>
         </Row>
